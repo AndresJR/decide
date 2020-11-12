@@ -2,9 +2,7 @@ ALLOWED_HOSTS = ["*"]
 
 # Modules in use, commented modules that you won't use
 MODULES = [
-    'authentication',
     'base',
-    'booth',
     'census',
     'mixnet',
     'postproc',
