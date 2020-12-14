@@ -10,7 +10,7 @@ jobs:
       tag: "3.6"
     steps:
       - checkout
-      - python/load-cache
+     # - python/load-cache
       - python/install-deps
       - python/save-cache
       - run: sudo apt-get update
