@@ -18,7 +18,7 @@ jobs:
       - python/save-cache
       - run: sudo apt-get update
       - run: sudo apt-get upgrade
-      - run: sudo apt-get install postgresql
+      - run: sudo apt-get install postgresql-12
       - run: sudo pg_ctlcluster 11 main start    
       - run: psql -U postgres -c "create user decide password 'decide'"
       - run: psql -U postgres -c "ALTER USER decide CREATEDB"
