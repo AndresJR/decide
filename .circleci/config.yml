@@ -15,7 +15,7 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run: sudo apt-get install postgresql-9.4
-      - run: sudo pg_ctlcluster 11 main start       
+      #- run: sudo pg_ctlcluster 11 main start       
       - run: sudo psql -U postgres -c "create user decide password 'decide'"
       - run: sudo psql -U postgres -c "ALTER USER decide CREATEDB"
       - run:
