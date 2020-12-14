@@ -18,9 +18,10 @@ jobs:
       - run: sudo pg_ctlcluster 11 main start    
       - run: sudo su - postgres -c "psql -c \"create user decide password 'decide'\""
       - run: sudo su - postgres -c "psql -c \"ALTER USER decide CREATEDB\""
-      - run: cd decide
       - run:
-          command: decide/manage.py test --exe
+          command: |
+            cd decide
+            ./manage.py test
           name: Test
          
   
