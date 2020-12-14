@@ -5,7 +5,9 @@ orbs:
 
 jobs:
   build:
-    executor: python/default-3.6
+    executor: python/default
+    paramenters:
+      - tag:"3.6"
     
     steps:
       - checkout
