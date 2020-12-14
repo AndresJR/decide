@@ -37,7 +37,7 @@ jobs:
       - attach_workspace:
           at: .
       - coverage-reporter/send_report:
-          coverage-reports: 'decide/report.xml'
+          coverage-reports: 'decide/coverage.xml'
           project-token: $CODACY_PROJECT_TOKEN
          
 workflows:
