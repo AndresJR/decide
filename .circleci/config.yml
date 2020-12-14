@@ -16,7 +16,7 @@ jobs:
       - python/save-cache
       - run: sudo apt-get install postgresql
       - run: sudo pg_ctlcluster 11 main start    
-      - run: sudo su - posgres   
+      - run: sudo su - postgres   
       - run: create user decide password 'decide'
       - run: ALTER USER decide CREATEDB
       - run:
