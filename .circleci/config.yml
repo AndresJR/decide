@@ -2,23 +2,22 @@ version: 2.1
 
 orbs:
   python: circleci/python@0.2.1
+  postgres: onehq/postgres@1.1.0
 
 jobs:
   build:
     executor: 
       name: python/default
       tag: "3.6"
-    
-    docker:
-      - image: circleci/postgres:9.6.5-alpine-ram
-
-
       
     steps:
       - checkout
       - python/load-cache
       - python/install-deps
       - python/save-cache
+      - run:
+          command: sudo apt-get install postgres
+          name: postgres
       - run:
           command: decide/manage.py test
           name: Test
