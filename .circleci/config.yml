@@ -8,7 +8,9 @@ jobs:
     executor: 
       name: python/default
       tag: "3.6"
-      
+    environment:
+        POSTGRES_HOST_AUTH_METHOD: trust
+
     steps:
       - checkout
       - python/load-cache
@@ -16,9 +18,8 @@ jobs:
       - python/save-cache
       - run: sudo apt-get install postgresql
       - run: sudo pg_ctlcluster 11 main start    
-      - run: sudo su - postgres \  
-              create user decide password 'decide' \
-              ALTER USER decide CREATEDB
+      - run: psql -U postgres -c "create user decide password 'decide'"
+      - run: psql -U postgres -c "ALTER USER decide CREATEDB"
       - run:
           command: decide/manage.py test
           name: Test
