@@ -13,7 +13,6 @@ jobs:
       - python/load-cache
       - python/install-deps
       - python/save-cache
-      - run: pip install codacy-coverage
       - run: sudo apt-get update
       - run: sudo apt-get upgrade
       - run: sudo apt-get install postgresql
@@ -30,15 +29,23 @@ jobs:
           root: .
           paths:
             - .
-  coverage:
-    executor: coverage-reporter/default
+  cover:
+    codacy-coverage-report:
+    docker:
+      - image: 'circleci/openjdk:8-jdk'    
     steps:
       - attach_workspace:
           at: .
-      - coverage-reporter: send-report
+      - coverage-reporter/send_report:
+          coverage-reports: 'report.xml,coverage.info'
+          project-token: $CODACY_PROJECT_TOKEN
          
-  
 workflows:
+  version: 2
   main:
     jobs:
       - build
+      - cover:
+          requires:
+            - build
+      
