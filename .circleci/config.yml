@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   python: circleci/python@0.2.1
+  coverage-reporter: codacy/coverage-reporter@11.4.0
   
 jobs:
   build:
@@ -21,8 +22,19 @@ jobs:
       - run:
           command: |
             cd decide
-            ./manage.py test
+            coverage run --branch --source=. ./manage.py test --keepdb --with-xunit
+            coverage xml
           name: Test
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+  coverage:
+    executor: coverage-reporter/default
+    steps:
+      - attach_workspace:
+          at: .
+      - coverage-reporter: send-report
          
   
 workflows:
