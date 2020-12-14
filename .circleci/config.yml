@@ -5,8 +5,12 @@ orbs:
 
 jobs:
   build:
-    executor: python36/default
-      - tag: 3.6
+    parameters:
+        tag:
+          type: string
+          default: "3.6"
+    executor: python/default
+    
     steps:
       - checkout
       - python/load-cache
