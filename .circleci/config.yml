@@ -1,27 +1,23 @@
 version: 2.1
-
 orbs:
-  python: circleci/python@1.3.1
+  python: circleci/python@0.2.1
   
 jobs:
   build:
     executor: 
       name: python/default
       tag: "3.6"
-    environment:
-        POSTGRES_HOST_AUTH_METHOD: trust
-
     steps:
       - checkout
-      - python/install-packages
-     # - python/install-deps
-     # - python/save-cache
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
       - run: sudo apt-get update
       - run: sudo apt-get upgrade
       - run: sudo apt-get install postgresql
-      - run: sudo su - postgres -c "/usr/lib/postgresql/10/bin/pg_ctl -D /var/lib/postgresql/10/main -l logfile start"
-      - run: psql -U postgres -c "create user decide password 'decide'"
-      - run: psql -U postgres -c "ALTER USER decide CREATEDB"
+      - run: sudo pg_ctlcluster 11 main start    
+      - run: sudo su - postgres -c "create user decide password 'decide'"
+      - run: sudo su - postgres -c "ALTER USER decide CREATEDB"
       - run:
           command: decide/manage.py test
           name: Test
