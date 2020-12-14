@@ -19,7 +19,7 @@ jobs:
       - run: sudo su - postgres -c "psql -c \"create user decide password 'decide'\""
       - run: sudo su - postgres -c "psql -c \"ALTER USER decide CREATEDB\""
       - run:
-          command: decide/manage.py test
+          command: decide/manage.py test --exe
           name: Test
          
   
