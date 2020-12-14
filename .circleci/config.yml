@@ -15,7 +15,9 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run: sudo apt-get install postgresql
-      - run: sudo pg_ctlcluster 11 main start         
+      - run: sudo pg_ctlcluster 11 main start       
+      - run: psql -U postgres -c "create user decide password 'decide'"
+      - run: psql -U postgres -c "ALTER USER decide CREATEDB"
       - run:
           command: decide/manage.py test
           name: Test
