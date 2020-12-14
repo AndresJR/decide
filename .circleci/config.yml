@@ -22,7 +22,7 @@ jobs:
       - run: 
           command: |
             cd decide
-            coverage run --branch --source=. ./manage.py test --keepdb --with-xunit
+            coverage run --branch --source=. ./manage.py test census --keepdb --with-xunit
             coverage xml
           name: Test
       - persist_to_workspace:
@@ -37,7 +37,7 @@ jobs:
       - attach_workspace:
           at: .
       - coverage-reporter/send_report:
-          coverage-reports: 'report.xml,coverage.info'
+          coverage-reports: 'decide/report.xml'
           project-token: $CODACY_PROJECT_TOKEN
          
 workflows:
