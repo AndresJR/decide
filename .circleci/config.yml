@@ -19,7 +19,7 @@ jobs:
       - run: sudo pg_ctlcluster 11 main start    
       - run: sudo su - postgres -c "psql -c \"create user decide password 'decide'\""
       - run: sudo su - postgres -c "psql -c \"ALTER USER decide CREATEDB\""
-      - run:
+      - run: 
           command: |
             cd decide
             coverage run --branch --source=. ./manage.py test --keepdb --with-xunit
