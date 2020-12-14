@@ -8,6 +8,11 @@ jobs:
     executor: 
       name: python/default
       tag: "3.6"
+    
+    docker:
+      - image: circleci/postgres:9.6.5-alpine-ram
+
+
       
     steps:
       - checkout
