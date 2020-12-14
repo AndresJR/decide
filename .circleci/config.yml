@@ -15,7 +15,7 @@ jobs:
       - python/install-deps
       - python/save-cache
       - run: sudo apt-get install postgresql
-      - run: pg_ctlcluster 11 main start         
+      - run: sudo pg_ctlcluster 11 main start         
       - run:
           command: decide/manage.py test
           name: Test
