@@ -16,8 +16,8 @@ jobs:
       - run: sudo apt-get upgrade
       - run: sudo apt-get install postgresql
       - run: sudo pg_ctlcluster 11 main start    
-      - run: sudo su - postgres -c "create user decide password 'decide'"
-      - run: sudo su - postgres -c "ALTER USER decide CREATEDB"
+      - run: sudo su - postgres -c "psql -c \"create user decide password 'decide'\"""
+      - run: sudo su - postgres -c "psql -c \"ALTER USER decide CREATEDB\"""
       - run:
           command: decide/manage.py test
           name: Test
