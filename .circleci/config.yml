@@ -6,6 +6,7 @@ orbs:
 jobs:
   build:
     executor: python36/default
+      - tag: 3.6
     steps:
       - checkout
       - python/load-cache
