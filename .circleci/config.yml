@@ -7,6 +7,7 @@ orbs:
   
 jobs:
   build:
+    
     executor: 
       name: python/default
       tag: "3.6"
@@ -56,7 +57,11 @@ workflows:
   version: 2
   main:
     jobs:
-      - build
+      - build:
+        filters:    
+          branches:
+            only: 
+              - master
       - cover:
           requires:
             - build
