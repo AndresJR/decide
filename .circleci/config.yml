@@ -60,11 +60,16 @@ workflows:
       - build:
         filters:    
           branches:
-            only: 
-              - master
+            only: master
       - cover:
           requires:
             - build
+          filters:    
+            branches:
+              only: master
       - deploy:
           requires:
             - build      
+          filters:    
+            branches:
+              only: master
