@@ -46,7 +46,7 @@ jobs:
     steps:
       - checkout
       - run: ls -la
-      - run: mv project/decide/decide/settings_heroku.py project/decide/decide/settings.py
+      - run: mv decide/decide/settings_heroku.py decide/decide/settings.py
       - heroku/install
       - heroku/deploy-via-git:
           app-name: egc-app-decide3
