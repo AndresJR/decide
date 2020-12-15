@@ -12,10 +12,9 @@ jobs:
       tag: "3.6"
     steps:
       - checkout
-     # - python/load-cache
+      #- python/load-cache
       - python/install-deps
-      - python/save-cache
-      - heroku/install
+      #- python/save-cache
       - run: sudo apt-get update
       - run: sudo apt-get upgrade
       - run: sudo apt-get install postgresql
