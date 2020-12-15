@@ -45,6 +45,7 @@ jobs:
     executor: heroku/default
     steps:
       - checkout
+      - run: ls -la
       - run: mv project/decide/decide/settings_heroku.py project/decide/decide/settings.py
       - heroku/install
       - heroku/deploy-via-git:
