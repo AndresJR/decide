@@ -45,7 +45,7 @@ jobs:
     executor: heroku/default
     steps:
       - checkout
-      - run: mv decide/decide/settings_heroku.py decide/decide/decide/settings.py
+      - run: mv decide/decide/decide/settings_heroku.py decide/decide/decide/settings.py
       - heroku/install
       - heroku/deploy-via-git:
           app-name: egc-app-decide3
