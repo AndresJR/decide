@@ -58,18 +58,12 @@ workflows:
   main:
     jobs:
       - build:
-        filters:    
-          branches:
+          filters:    
+           branches:
             only: master
       - cover:
           requires:
             - build
-          filters:    
-            branches:
-              only: master
       - deploy:
           requires:
             - build      
-          filters:    
-            branches:
-              only: master
